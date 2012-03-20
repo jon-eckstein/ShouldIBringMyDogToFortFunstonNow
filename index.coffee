@@ -21,6 +21,6 @@ app.configure ->
   app.use express.logger()
   app.get "/application.js", package.createServer()
 
-port = argv[0] or process.env.PORT or 9294
+port = argv[0] or process.env.PORT or 80
 console.log "Starting server on port: #{port}"
 app.listen port
