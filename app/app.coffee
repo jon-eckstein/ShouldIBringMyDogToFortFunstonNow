@@ -23,8 +23,8 @@ module.exports = App =
      success: (data, textStatus, jqXHR) =>
          currentObs = data.current_observation
          console.log currentObs
-   	 displayTempText = currentObs.temp_f + "F"
-	 displayTempText += "(feels like " + currentObs.windchill_f + "F with wind chill)" if !isNaN(currentObs.windchill_f)
+         displayTempText = currentObs.temp_f + "F"
+         displayTempText += "(feels like " + currentObs.windchill_f + "F with wind chill)" if !isNaN(currentObs.windchill_f)
          @tempText displayTempText
          @weatherText currentObs.weather
          @windText currentObs.wind_mph + " MPH gusting to " + currentObs.wind_gust_mph + " MPH"
