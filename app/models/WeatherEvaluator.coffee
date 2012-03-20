@@ -18,6 +18,7 @@ class WeatherEvaluator
      @weatherScore(@weatherScore() + -2) if @weather.indexOf('Rain') > -1
      @weatherScore(@weatherScore() + -1) if @weather.indexOf('Drizzle') > -1
      @weatherScore(@weatherScore() + -1) if @weather is 'Overcast'
+     @weatherScore(@weatherScore() + -1) if @weather is 'Mostly Cloudy'
      @weatherScore(@weatherScore() + -2) if @weather.indexOf('Fog') > -1
      @weatherScore(@weatherScore() + -2) if @weather.indexOf('Showers') > -1
      
