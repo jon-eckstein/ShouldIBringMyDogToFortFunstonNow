@@ -59,13 +59,13 @@
 	</div>
 	<div data-bind="css: { visible: app.isRequestComplete() }" class="hidden"  >
 		<div data-bind="if: !app.isError()">
-			<div data-bind="if: evaler.totalScore() >= 0" >
+			<div data-bind="if: weatherEvaler.totalScore() >= 0" >
 			   <h3 class="answer yes">Yes</h3>
 			</div>
-			<div data-bind="if: evaler.totalScore() <= -3" >
+			<div data-bind="if: weatherEvaler.totalScore() <= -3" >
 			   <h3 class="answer no">No</h3>
 			</div>		
-			<div data-bind="if: evaler.totalScore() < 0 && evaler.totalScore() > -3" >
+			<div data-bind="if: weatherEvaler.totalScore() < 0 && weatherEvaler.totalScore() > -3" >
 			   <h3 class="answer maybe">Maybe</h3>
 			</div>
 		</div>
@@ -75,11 +75,11 @@
 		<div style="margin-top:100px;font-size:20px">
 		      <dl xmlns="http://www.w3.org/1999/xhtml" class="dl-horizontal myDl"  >
 			<dt>Condtions</dt>
-			<dd data-bind="text: app.weatherText() , css: { maybe : evaler.weatherScore() < 0, no : evaler.weatherScore() < -1 }" /></dd>
+			<dd data-bind="text: app.weatherText() , css: { maybe : weatherEvaler.weatherScore() < 0, no : weatherEvaler.weatherScore() < -1 }" /></dd>
 			<dt>Wind</dt>
-			<dd data-bind="text: app.windText(), css: { maybe : evaler.windScore() < 0, no : evaler.windScore() < -1 }" /></dd>
+			<dd data-bind="text: app.windText(), css: { maybe : weatherEvaler.windScore() < 0, no : weatherEvaler.windScore() < -1 }" /></dd>
 			<dt>Temp</dt>
-			<dd data-bind="text: app.tempText(), css: { maybe : evaler.tempScore() < 0, no : evaler.tempScore() < -1 }" /></dd>
+			<dd data-bind="text: app.tempText(), css: { maybe : weatherEvaler.tempScore() < 0, no : weatherEvaler.tempScore() < -1 }" /></dd>
 		      </dl>
 		      <div data-bind="text: app.obsTimeText()" style="font-size:small"></div>
 	       </div>
@@ -101,23 +101,16 @@
       	   App.init();
 	   var viewModel = {
 		app : App,
-		evaler : App.evaler,
-                answerTemplate : function(data){
-		    console.log(data)
-                    if(data.evaler.totalScore() >= 0)
-                    	return "answerYes";		
-                    if(data.evaler.totalScore() < -3)
-                    	return "answerNo";
-                    if(data.evaler.totalScore() < 0 && data.evaler.totalScore() > -3)
-                    	return "answerMaybe";
-		}
-	   };
+		weatherEvaler : App.weatherEvaler,
+		tideEvaler : App.tideEvaler
+		};
+	   
 
            ko.applyBindings(viewModel);        
            App.getWeatherData();
          });
 
-
+/*
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-30327448-1']);
 	  _gaq.push(['_trackPageview']);
@@ -126,6 +119,6 @@
 	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
+	  })(); */
    </script>
 </html>

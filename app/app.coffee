@@ -1,4 +1,5 @@
 WeatherEvaluator = require("models/WeatherEvaluator")
+TideEvaluator = require("models/TideEvaluator")
 
 module.exports = App =
   init :->
@@ -6,7 +7,8 @@ module.exports = App =
     @windText = ko.observable('...')
     @tempText = ko.observable('...')
     @obsTimeText = ko.observable('')
-    @evaler = new WeatherEvaluator
+    @weatherEvaler = new WeatherEvaluator
+    @tideEvaler = new TideEvaluator
     @isError = ko.observable(false)
     @isRequestComplete = ko.observable(false)
 
@@ -29,4 +31,5 @@ module.exports = App =
          @weatherText currentObs.weather
          @windText currentObs.wind_mph + " MPH gusting to " + currentObs.wind_gust_mph + " MPH"
          @obsTimeText currentObs.observation_time
-         @evaler.computeScore(currentObs.weather,currentObs.wind_mph, parseFloat(currentObs.wind_gust_mph), currentObs.temp_f ,parseFloat(currentObs.windchill_f))
+         @weatherEvaler.computeScore(currentObs.weather,currentObs.wind_mph, parseFloat(currentObs.wind_gust_mph), currentObs.temp_f ,parseFloat(currentObs.windchill_f))
+         @tideEvaler.computeScore(data.tide)
