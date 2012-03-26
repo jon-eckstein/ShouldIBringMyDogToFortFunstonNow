@@ -6,31 +6,9 @@
   <title>Should I take my dog to Fort Funston now?</title>
   <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet"> 
   <script src="/application.js" type="text/javascript" charset="utf-8"></script>
-  <script src="http://cloud.github.com/downloads/SteveSanderson/knockout/knockout-2.0.0.js" type="text/javascript" charset="utf-8"></script>	
+  <script src="assets/knockout/knockout-2.0.0.js" type="text/javascript" charset="utf-8"></script>	
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript">
-	$(function()  {
-           window.App = require("app");
-      	   App.init();
-	   var viewModel = {
-		app : App,
-		evaler : App.evaler,
-                answerTemplate : function(data){
-		    console.log(data)
-                    if(data.evaler.totalScore() >= 0)
-                    	return "answerYes";		
-                    if(data.evaler.totalScore() < -3)
-                    	return "answerNo";
-                    if(data.evaler.totalScore() < 0 && data.evaler.totalScore() > -3)
-                    	return "answerMaybe";
-		}
-	   };
-
-           ko.applyBindings(viewModel);        
-           App.getWeatherData();
-         });
-   </script>	
-   <style type="text/css">
+  <style type="text/css">
 	dl.myDl dd {
 	    margin-left:120px;
 	    margin-top:10px;
@@ -117,4 +95,26 @@
 
     </div>	
 </body>
+  <script type="text/javascript">
+	$(function()  {
+           window.App = require("app");
+      	   App.init();
+	   var viewModel = {
+		app : App,
+		evaler : App.evaler,
+                answerTemplate : function(data){
+		    console.log(data)
+                    if(data.evaler.totalScore() >= 0)
+                    	return "answerYes";		
+                    if(data.evaler.totalScore() < -3)
+                    	return "answerNo";
+                    if(data.evaler.totalScore() < 0 && data.evaler.totalScore() > -3)
+                    	return "answerMaybe";
+		}
+	   };
+
+           ko.applyBindings(viewModel);        
+           App.getWeatherData();
+         });
+   </script>	
 </html>
