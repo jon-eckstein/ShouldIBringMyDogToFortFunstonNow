@@ -80,6 +80,8 @@
 			<dd data-bind="text: app.windText(), css: { maybe : weatherEvaler.windScore() < 0, no : weatherEvaler.windScore() < -1 }" /></dd>
 			<dt>Temp</dt>
 			<dd data-bind="text: app.tempText(), css: { maybe : weatherEvaler.tempScore() < 0, no : weatherEvaler.tempScore() < -1 }" /></dd>
+			<dt>Tide</dt>
+			<dd data-bind="text: app.tideText(), css: { maybe : tideEvaler.totalScore() < 0, no : tideEvaler.totalScore() < -1 }" /></dd>
 		      </dl>
 		      <div data-bind="text: app.obsTimeText()" style="font-size:small"></div>
 	       </div>
