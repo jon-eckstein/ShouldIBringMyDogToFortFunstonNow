@@ -6,7 +6,7 @@ module.exports = App =
     @weatherText = ko.observable('...')
     @windText = ko.observable('...')
     @tempText = ko.observable('...')
-    @tideText = ko.observable('...')
+    @tideText = ko.observable('No tide data available.')
     @obsTimeText = ko.observable('')
     @weatherEvaler = new WeatherEvaluator
     @tideEvaler = new TideEvaluator
@@ -33,6 +33,7 @@ module.exports = App =
          @windText currentObs.wind_mph + " MPH gusting to " + currentObs.wind_gust_mph + " MPH"
          @obsTimeText currentObs.observation_time
          @weatherEvaler.computeScore(currentObs.weather,currentObs.wind_mph, parseFloat(currentObs.wind_gust_mph), currentObs.temp_f ,parseFloat(currentObs.windchill_f))
-         @tideEvaler.computeScore(data.tide)
-         @tideText  "Next low tide in #{@tideEvaler.nextLowTideHours.toFixed(2)} hours"
+         if data.tide?
+            @tideEvaler.computeScore(data.tide)
+            @tideText  "Next low tide in #{@tideEvaler.nextLowTideHours.toFixed(2)} hours"
          #console.log @tideEvaler.nextLowTideHours
