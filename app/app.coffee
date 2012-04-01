@@ -33,7 +33,7 @@ module.exports = App =
          @windText currentObs.wind_mph + " MPH gusting to " + currentObs.wind_gust_mph + " MPH"
          @obsTimeText currentObs.observation_time
          @weatherEvaler.computeScore(currentObs.weather,currentObs.wind_mph, parseFloat(currentObs.wind_gust_mph), currentObs.temp_f ,parseFloat(currentObs.windchill_f))
-         if data.tide?
+         if data.tide.tideSummary.length > 0
             @tideEvaler.computeScore(data.tide)
             @tideText  "Next low tide in #{@tideEvaler.nextLowTideHours.toFixed(2)} hours"
          #console.log @tideEvaler.nextLowTideHours
